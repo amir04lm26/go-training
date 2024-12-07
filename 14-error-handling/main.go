@@ -6,6 +6,13 @@ import (
 	"log"
 )
 
+// NOTE: Error Handling in Go
+/*
+	In Go, error handling is done explicitly using the error type.
+	Functions that can fail return an error as their last return value, and it’s the
+	responsibility of the caller to handle the error.
+*/
+
 func greeting(name string) (string, error) {
 	if name == "" {
 		return "", errors.New("empty name")

@@ -10,6 +10,12 @@ import (
 	•	testing.T: This struct is used to log errors and to signal test failures.
 	•	t.Errorf: If the test fails, t.Errorf logs the error and continues running other tests.
 	•	Naming: The test function is named TestAdd to indicate it’s testing the Add function.
+
+	•	testing.T: A type provided by the testing package to handle test cases.
+		You use it to log errors, and it provides methods like t.Error() and t.Fatalf() for
+		reporting failures.
+	•	t.Errorf(): Logs a formatted error message but allows the test to continue.
+		You can also use t.Fail() or t.FailNow().
 */
 
 func TestAdd(test *testing.T) {

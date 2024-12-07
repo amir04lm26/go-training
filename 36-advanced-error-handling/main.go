@@ -49,6 +49,7 @@ func returningErrorsExample() {
 // NOTE: Custom Error Types
 /*
 	You can define custom error types to provide more information or structure for your errors.
+	You can define custom error types by implementing the Error() method.
 */
 
 type DivideError struct {

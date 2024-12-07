@@ -8,6 +8,14 @@ import "fmt"
 	program from crashing.
 */
 
+// NOTE: When to Use Panic vs. Error?
+/*
+	•	Use errors for normal error conditions that are expected in the flow of the program
+		(like file not found or invalid input).
+	•	Use panic for exceptional situations where the program cannot continue (like memory
+		corruption or out-of-bounds access).
+*/
+
 // NOTE: Explanation
 /*
 	•	Defer: The defer keyword schedules a function to be called after the surrounding function returns.
@@ -24,6 +32,7 @@ func divide(num1, num2 float64) float64 {
 
 func safeDivide(num1, num2 float64) (result float64) {
 	defer func() {
+		fmt.Println("deferred function")
 		if rec := recover(); rec != nil {
 			fmt.Println("Recovering from panic:", rec)
 			result = 0 // Set default value on panic
