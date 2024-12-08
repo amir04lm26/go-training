@@ -8,6 +8,12 @@ import "fmt"
 	the input for the next stage. In Go, pipelines can be implemented using goroutines and channels.
 */
 
+// NOTE: Pipeline
+/*
+	Description: This pattern connects several stages of processing where each stage processes data and passes it to the next.
+	It’s useful for breaking down complex operations into simpler ones.
+*/
+
 // NOTE: Explanation
 /*
 	•	generate: Generates numbers and sends them through the channel.

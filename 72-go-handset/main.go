@@ -43,12 +43,26 @@ package main
 	Go programs are typically built using the go build command.
 	This compiles the code into an executable binary.
 
+	```bash
+	go build
+	```
+
+	This command compiles the Go code in the current directory and produces an executable file
+	named after the module (or the directory name).
+
 	Example: Building a Go Program
 	```bash
 	go build -o myprogram main.go
 	```
 
 	This command will produce an executable named myprogram.
+
+	You can cross-compile your Go application for different operating systems and architectures.
+	For example, to build for Windows, you can run:
+
+	```bash
+	GOOS=windows GOARCH=amd64 go build
+	```
 */
 
 // NOTE: Go Tools Overview
@@ -57,7 +71,7 @@ package main
 		•	go fmt: Formats your code according to Go’s style guidelines.
 		•	go vet: Examines your code for potential issues.
 		•	go test: Runs tests in your project.
-		•	go mod tidy: Cleans up your go.mod file by removing unused dependencies.
+		•	go mod tidy: Cleans up your go.mod file by removing unused dependencies and include new dependencies.
 		•	go run: Runs a Go program without building an executable.
 */
 

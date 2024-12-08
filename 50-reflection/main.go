@@ -63,7 +63,29 @@ func modifyValueWithReflection() {
 	sparingly, as it can make the code harder to understand and slower.
 */
 
+// NOTE: Working with Structs
+/*
+	Reflection allows you to inspect and manipulate struct fields.
+
+	Struct Fields: You can iterate over struct fields using reflection.
+*/
+
+type Person struct {
+	Name string
+	Age  int
+}
+
+func iterateOverStruct() {
+	person := Person{"Amir", 30}
+	value := reflect.ValueOf(person)
+
+	for iterator := 0; iterator < value.NumField(); iterator++ {
+		fmt.Printf("Field %d: %v\n", iterator, value.Field(iterator))
+	}
+}
+
 func main() {
 	basicReflection()
 	modifyValueWithReflection()
+	iterateOverStruct()
 }

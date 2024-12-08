@@ -15,6 +15,7 @@ type Robot struct {
 	id string
 }
 
+// NOTE: Interface embedding
 func (person Person) greet() {
 	fmt.Println("Hello, my name is", person.name)
 }
