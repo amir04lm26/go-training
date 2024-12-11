@@ -20,4 +20,9 @@ package main
 	go test
 
 	This will automatically find all *_test.go files and run their tests.
+
+	To see detailed output, you can add the -v flag:
+	```bash
+	go test -v
+	```
 */

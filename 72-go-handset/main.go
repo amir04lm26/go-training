@@ -23,6 +23,32 @@ package main
 	This will add the errors package to your go.mod file.
 */
 
+// NOTE: Updating Dependencies
+/*
+	To update your dependencies to the latest version, you can use:
+	```bash
+	go get -u
+	```
+
+	To update a specific dependency, use:
+	```bash
+	go get example.com/package@latest
+	```
+*/
+
+// NOTE: Versioning
+/*
+	Go modules support semantic versioning. You can specify a version when adding a dependency:
+	```bash
+	go get example.com/package@v1.2.3
+	```
+
+	You can also use version ranges, such as:
+	```bash
+	go get example.com/package@^1.0.0
+	```
+*/
+
 // NOTE: Example: go.mod File
 /*
 	module example.com/my-module
@@ -36,6 +62,29 @@ package main
 /*
 	•	go.mod: Defines the module and its dependencies.
 	•	go get: Adds a dependency to the project.
+*/
+
+// NOTE: Key Takeaways:
+/*
+	•	Module Initialization: Use go mod init to create a new module.
+	•	Automatic Dependency Management: Go automatically updates go.mod when you import new packages.
+	•	Updating and Removing Dependencies: Use go get -u to update and go mod tidy to clean up.
+	•	Versioning Support: Go modules support semantic versioning.
+*/
+
+// NOTE: Running a Go Application
+/*
+	You can run your Go application directly using the go run command. This command compiles and executes the Go files specified.
+
+	Example:
+	```bash
+	go run main.go
+	```
+
+	You can also run multiple files at once:
+	```bash
+	go run main.go helper.go
+	```
 */
 
 // NOTE: Building Go Programs
@@ -63,6 +112,25 @@ package main
 	```bash
 	GOOS=windows GOARCH=amd64 go build
 	```
+*/
+
+// NOTE: Installing a Go Package
+/*
+	If you want to install a Go package globally (making it available for all projects), you can use the go install command. This compiles the package and places the executable in your GOPATH/bin directory.
+
+	Example:
+	```bash
+	go install example.com/myproject@latest
+	```
+*/
+
+// NOTE: Key Takeaways:
+/*
+	•	Building Applications: Use go build to compile your Go code into an executable.
+	•	Running Applications: Use go run to execute your Go files without creating an executable.
+	•	Cross-Compiling: Easily compile your application for different platforms using GOOS and GOARCH.
+	•	Installing Packages: Use go install to make your package globally available.
+	•	Running Tests: Execute tests using the go test command.
 */
 
 // NOTE: Go Tools Overview

@@ -11,6 +11,12 @@ import (
 	You can build RESTful services using Go’s net/http package. Here’s a simple example:
 */
 
+// NOTE: Explanation
+/*
+	•	http.HandleFunc: Registers a handler function for the specified pattern (in this case, /).
+	•	http.ListenAndServe: Starts the server on the specified port.
+*/
+
 type User struct {
 	ID   int    `json:"id"`
 	Name string `json:"name"`
