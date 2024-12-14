@@ -85,6 +85,11 @@ package main
 	```bash
 	go run main.go helper.go
 	```
+
+	To run every go package in the directory run:
+	```bash
+	go run ./...
+	```
 */
 
 // NOTE: Building Go Programs

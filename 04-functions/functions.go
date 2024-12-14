@@ -2,6 +2,9 @@ package main
 
 import "fmt"
 
+// NOTE: When we define function, it gets parameters
+// NOTE: When we use the function, it gets arguments
+
 func greet(name string) {
 	println("Hello, ", name)
 }
