@@ -44,4 +44,19 @@ func main() {
 	printType("hello")
 	printType(42)
 	printType(3.14)
+
+	const name = "Amir"
+	switch {
+	case name == "amir":
+		fmt.Println("First case")
+	case name == "Amir":
+		fmt.Println("Second case")
+		fallthrough
+	case name == "aMir":
+		fmt.Println("Third case")
+	case name == "amIr":
+		fmt.Println("Fourth case")
+	default:
+		fmt.Println("Default case")
+	}
 }

@@ -1,6 +1,9 @@
 package main
 
-import "time"
+import (
+	"fmt"
+	"time"
+)
 
 func main() {
 	// NOTE: classic for loop
@@ -15,6 +18,14 @@ func main() {
 	for 0 < iterator {
 		println("iterator:", iterator)
 		iterator--
+	}
+
+	// NOTE: continue -> takes to next iteration
+	for iterator := 0; iterator < 20; iterator++ {
+		if iterator%2 != 0 {
+			continue
+		}
+		fmt.Println("counting even numbers:", iterator)
 	}
 
 	// NOTE: Infinite loop

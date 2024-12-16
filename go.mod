@@ -3,6 +3,7 @@ module go/go-examples
 go 1.23.0
 
 require (
+	github.com/amir04lm26/go-custom-pkg v0.0.0-20241214183129-b614fff0da3e
 	github.com/gin-gonic/gin v1.10.0
 	github.com/gorilla/mux v1.8.1
 	github.com/lib/pq v1.10.9
