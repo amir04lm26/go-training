@@ -106,6 +106,11 @@ func addBook(res http.ResponseWriter, req *http.Request) {
 		http.Error(res, err.Error(), http.StatusBadRequest)
 		return
 	}
+	// NOTE: func append(slice []Type, elems ...Type) []Type -> ... means variadic parameter
+	/*
+		a variadic function is a function of indefinite arity, i.e., one which accepts
+		a variable number of arguments
+	*/
 	books = append(books, newBook)
 	res.WriteHeader(http.StatusCreated)
 	json.NewEncoder(res).Encode(newBook)
