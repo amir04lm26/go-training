@@ -20,7 +20,7 @@ import "fmt"
 		•	When you pass reference types (like slices, maps, channels, and pointers) to a function,
 			the reference to the original data is passed. This means that modifications to the data
 			can affect the original variable.
-			reference types: slices, maps, channels, pointers and functions
+			reference types: slices, maps, channels, pointers, interfaces and functions
 
 	3.	Using Pointers:
 		•	If you want to modify a value type within a function, you can pass a pointer to that

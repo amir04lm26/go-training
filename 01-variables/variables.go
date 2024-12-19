@@ -65,4 +65,7 @@ func main() {
 	const pi float64 = 3.14159
 	const condition bool = true
 	fmt.Println("pi:", pi, ", condition:", condition)
+
+	const balance = 999_999_999_999_999
+	fmt.Println("balance", balance)
 }

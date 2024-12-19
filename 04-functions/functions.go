@@ -40,6 +40,7 @@ func main() {
 		println("divided:", divideRes)
 	}
 
+	// * called anonymous func in go
 	func() {
 		value := "IIFE"
 		fmt.Printf("I believe this is an immediately invoked function expression (%v)\r\n", value)
