@@ -127,6 +127,31 @@ import "fmt"
 	escape analysis determines whether variables should go on the stack or heap.
 */
 
+// NOTE: Inlining Decisions: Replacing a function call site with the body of the called function
+/*
+	1. save the overhead of a function call (i.e., the time it takes to the function code,
+	   setup the function's local variables, and the n jump back when the function is complete)
+	2.  It can make further optimizations possible. Once the code from the function is inserted
+		into the calling function, the compiler may be able to see opportunities to optimize
+		this larger block of code that weren't visible when the code was split across multiple
+		functions.
+*/
+
+// NOTE: see escape analysis and inlining decisions in go
+/*
+	Here's an example:
+	```bash
+	go run -gcflags '-m' main.go
+	```
+
+	You can use `-m=2` for more detailed information:
+	```bash
+	go run -gcflags '-m=2' main.go
+	```
+
+	This will print out escape analysis and inlining decisions.
+*/
+
 type Person struct {
 	Name string
 }
