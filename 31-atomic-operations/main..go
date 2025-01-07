@@ -2,6 +2,7 @@ package main
 
 import (
 	"fmt"
+	"runtime"
 	"sync"
 	"sync/atomic"
 )
@@ -54,6 +55,8 @@ func worker(id int, counter *int64, wg *sync.WaitGroup) {
 
 	for iterator := 0; iterator < 1000; iterator++ {
 		atomic.AddInt64(counter, 1) // NOTE: Atomically increment the counter
+		runtime.Gosched()           // yields the processor
+		// fmt.Println("counter:", atomic.LoadInt64(counter))
 	}
 
 	fmt.Printf("Worker %d finished\n", id)

@@ -63,7 +63,7 @@ import "fmt"
 	Recap:
 
 	•	chan is used for communication between Goroutines.
-	•	range iterates over the slice to sum its elements.
+	•	range iterates over the slice to sum its elements. (range blocks until the channel is closed)
 	•	Goroutines run the sum calculations in parallel.
 	•	Blocking receive from the channel ensures synchronization.
 */
@@ -170,8 +170,24 @@ func unBufferedChannelSecondExample() {
 		or sync.WaitGroup instead if needed.
 */
 
+// NOTE: In channels that types directions is different, We can assign bi-directional channels to directional channels. Also, the same type to the same type
+// NOTE: type-conversion -> bi-directional channels to directional channels converts
+
+func commaOkChannelExample() {
+	channel := make(chan int)
+
+	go func() {
+		channel <- 42
+	}()
+
+	value, ok := <-channel
+
+	fmt.Println(value, ok)
+}
+
 func main() {
 	channelExample()
 	bufferChannelExample()
 	unBufferedChannelSecondExample()
+	commaOkChannelExample()
 }
