@@ -10,9 +10,10 @@ type person struct {
 
 // * embedding a struct in another struct
 type employee struct {
-	person person
-	id     int
-	first  string
+	// person person
+	person
+	id    int
+	first string
 }
 
 func main() {
@@ -25,8 +26,10 @@ func main() {
 	fmt.Printf("%#v\n", e1)
 
 	// NOTE: Inner type promotion: the property will be accessAble from the upper level
+	// NOTE: Also for methods
 	e2 := employee{person{"Amir", "Zare", 27}, 123, "new"}
 	fmt.Println(e2, e2.first, e2.person.first)
+	fmt.Println(e2, e2.age)
 
 	// * anonymous struct
 	p2 := struct {

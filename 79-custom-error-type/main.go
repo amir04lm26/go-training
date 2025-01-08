@@ -1,6 +1,8 @@
 package main
 
-import "fmt"
+import (
+	"fmt"
+)
 
 // NOTE: Custom Error Types
 /*
@@ -38,4 +40,7 @@ func main() {
 	if err != nil {
 		fmt.Println(err)
 	}
+
+	// * Assertion -> when we want the type of struct behind an interface
+	fmt.Println("When:", err.(*MyError).When)
 }

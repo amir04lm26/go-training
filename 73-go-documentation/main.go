@@ -1,4 +1,7 @@
+// Package main talks about documentation
 package main
+
+import "fmt"
 
 // NOTE: Go Documentation: go doc and godoc
 /*
@@ -11,6 +14,11 @@ package main
 	go doc fmt.Println
 	```
 
+	Show the source code
+	```bash
+	go doc -src fmt.Println
+	```
+
 	This command shows the documentation for the fmt.Println function.
 
 	Example: Generating Web Docs with godoc
@@ -18,10 +26,25 @@ package main
 	godoc -http=:6060
 	```
 
+	Install using:
+	```bash
+	go install golang.org/x/tools/cmd/godoc@latest
+	```
+
 	This will launch a local web server on localhost:6060 where you can browse your
 	project’s documentation.
 */
 
-func main() {
+// Sum adds inputs together
+// the rest of description goes here
+func Sum(num ...int) int {
+	var total int
+	for _, singleNum := range num {
+		total += singleNum
+	}
+	return total
+}
 
+func main() {
+	fmt.Println(Sum(2, 23, 3))
 }

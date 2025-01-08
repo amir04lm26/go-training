@@ -13,6 +13,11 @@ import "fmt"
 	When a program encounters a panic, it prints the error message and stack trace and then exits.
 */
 
+// NOTE: Fatal
+/*
+	When we use Fatal the program exists using os.exit, but in panic we can use recover
+*/
+
 // NOTE: Explanation
 /*
 	•	The panic function is called when an invalid operation occurs (in this case, dividing by zero).

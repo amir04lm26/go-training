@@ -33,6 +33,10 @@ import (
 	The defer keyword in Go is used to ensure that a function call is executed after the
 	surrounding function completes. The deferred function will execute just before the
 	surrounding function returns, no matter how the function exits (normal return, error, panic, etc.).
+
+	deferred functions won't run when os.Exit runs
+	all deferred functions will run after panic, and panicking propagates to the top of call-stack
+	in reverse order
 */
 
 func worker(id int, wg *sync.WaitGroup) {

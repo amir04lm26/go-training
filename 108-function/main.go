@@ -46,6 +46,11 @@ func (count count) String() string {
 	return fmt.Sprint("The number is ", strconv.Itoa(int(count)))
 }
 
+// NOTE: log.Println vs fmt.Println
+/*
+	log.Println has timestamp attached to it. Also, we can use something else rather than stdout
+*/
+
 // * wrapper
 // NOTE: wrapper is a function that provides an additional layer of abstraction or functionality around an existing function
 func logInfo(stringer fmt.Stringer) {

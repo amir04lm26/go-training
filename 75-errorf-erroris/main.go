@@ -21,6 +21,7 @@ import (
 var ErrNotFound = errors.New("not found")
 
 func findValue(id int) error {
+	// NOTE: fmt.Errorf calls errors.New under the hood
 	return fmt.Errorf("failed to find value: %w", ErrNotFound)
 }
 

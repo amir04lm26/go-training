@@ -146,6 +146,7 @@ package main
 		•	go test: Runs tests in your project.
 		•	go mod tidy: Cleans up your go.mod file by removing unused dependencies and include new dependencies.
 		•	go run: Runs a Go program without building an executable.
+		•	golint: report poor coding style
 */
 
 func main() {
