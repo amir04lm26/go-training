@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Hello World!</title>
+  </head>
+  <body>
+    <!-- Example 1 -->
+    <div>{{index .Numeric 2}}</div>
+    <div>{{index .Numeric 0}}</div>
+    <div>{{index .Numeric 1}}</div>
+
+    <!-- Example 2 -->
+    <div>{{.Users}}</div>
+
+    <!-- Example 3 -->
+    {{if .Users}}
+    <div>{{.Users}}</div>
+    {{end}}
+
+    <!-- Example 4 -->
+    <ul>
+    {{range .Users}}
+      {{if .Name}}
+        <li>{{.Name}}</li>
+      {{end}}
+    {{end}}
+    </ul>
+
+    <!-- Example 5 -->
+     <ul>
+      {{range .Users}}
+        {{if and .Name .Admin}}
+          Name: {{.Name}}
+          Motto: {{.Motto}}
+          Admin: {{.Admin}}
+        {{end}}
+      {{end}}
+     </ul>
+  </body>
+</html>

@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Hello World!</title>
+  </head>
+  <body>
+    <h1>Sages:</h1>
+    <ul>
+      {{range .}}
+      <li>{{tu .Name}}({{ft .Name}}) - {{.Motto}}</li>
+      <li>{{tu (ft .Name)}}({{.Name}}) - {{.Motto}}</li>
+      <!-- * We can chain functions using pipelining -->
+      <li>{{.Name | ft | tu}}({{.Name}}) - {{.Motto}}</li>
+      {{end}}
+    </ul>
+  </body>
+</html>

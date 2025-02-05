@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Hello World!</title>
+  </head>
+  <body>
+    <h1>Buddha:</h1>
+    <div>{{.Name}} - {{.Motto}}</div>
+
+    <!-- * Assigning to variable -->
+    <h2>Assigning to variable:</h1>
+    {{$name := .Name}}
+    {{$motto := .Motto}}
+    <div>{{$motto}} - {{$name}}</div>
+  </body>
+</html>
