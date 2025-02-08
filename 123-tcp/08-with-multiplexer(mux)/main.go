@@ -32,12 +32,13 @@ func main() {
 func handle(connection net.Conn) {
 	defer connection.Close()
 
-	uri := request(connection)
+	method, uri := request(connection)
 
-	respond(connection, uri)
+	// NOTE: Mux should resolve the desire response handler fn instead of this
+	respond(connection, method, uri)
 }
 
-func request(connection net.Conn) (uri string) {
+func request(connection net.Conn) (method, uri string) {
 	iterator := 0
 	scanner := bufio.NewScanner(connection)
 
@@ -48,7 +49,7 @@ func request(connection net.Conn) (uri string) {
 		if iterator == 0 {
 			// * request line
 			fields := strings.Fields(line)
-			method := fields[0]
+			method = fields[0]
 			uri = fields[1]
 			fmt.Println("***METHOD", method)
 			fmt.Println("***URI", uri)
@@ -63,30 +64,48 @@ func request(connection net.Conn) (uri string) {
 	return
 }
 
-func respond(connection net.Conn, uri string) {
-	tpl, err := template.New("response").Parse(`
-		<!DOCTYPE html>
-		<html lang="en">
-		<head>
-			<meta charset="UTF-8" />
-			<title>Welcome to my http server!</title>
-		</head>
-		<body>
-			<h1>Http Server</h1>
-			<hr />
+func respond(connection net.Conn, method, uri string) {
+	isHomePage := method == "GET" && uri == "/"
+	tpl, err := template.New("templates").Parse(`
+		{{define "not-found"}}
+			<h2>The page you're looking for is not found!</h2>
+		{{end}}
+
+		{{define "home"}}
 			<h2>I'm sending this response using a tcp server.</h2>
-			<h2>Request: {{.}}</h2>
-		</body>
-		</html>
+		{{end}}
+		
+		{{define "response"}}
+			<!DOCTYPE html>
+			<html lang="en">
+			<head>
+				<meta charset="UTF-8" />
+				<title>Welcome to my http server!</title>
+			</head>
+			<body>
+				<h1>Http Server</h1>
+				<hr />
+				<h2>Request: {{.URI}}</h2>
+				{{if .IsHomePage}}
+					{{template "home"}}
+				{{else}}
+					{{template "not-found"}}
+				{{end}}
+			</body>
+			</html>
+		{{end}}
 	`)
 	if err != nil {
-		log.Panicln(err)
+		log.Println(err)
 	}
 
 	var bodyBuf bytes.Buffer
-	err = tpl.ExecuteTemplate(&bodyBuf, "response", uri)
+	err = tpl.ExecuteTemplate(&bodyBuf, "response", struct {
+		IsHomePage bool
+		URI        string
+	}{isHomePage, uri})
 	if err != nil {
-		log.Panicln(err)
+		log.Println(err)
 	}
 
 	fmt.Fprint(connection, "HTTP/1.1 200 OK\r\n")
@@ -96,6 +115,6 @@ func respond(connection net.Conn, uri string) {
 
 	_, err = bodyBuf.WriteTo(connection)
 	if err != nil {
-		log.Panicln(err)
+		log.Println(err)
 	}
 }
