@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Input Type Submit</title>
+</head>
+<body>
+    <header>
+        {{if .Method}}<p>The request method: {{.Method}}</p>{{end}}
+        {{if .Host}}<p>The request host: {{.Host}}</p>{{end}}
+        {{if .ContentLength}}<p>The request ContentLength: {{.ContentLength}}</p>{{end}}
+
+        {{if .URL}}<h2>The request URL:</h2>
+        <ul>
+            <li>Schema: {{.URL.Scheme}}</li>
+            <li>Opaque: {{.URL.Opaque}}</li>
+            <li>Host: {{.URL.Host}}</li>
+            <li>Path: {{.URL.Path}}</li>
+            <li>RawPath: {{.URL.RawPath}}</li>
+            <li>ForceQuery: {{.URL.ForceQuery}}</li>
+            <li>RawQuery: {{.URL.RawQuery}}</li>
+            <li>Fragment: {{.URL.Fragment}}</li>
+        </ul>
+        {{end}}
+
+        {{if .Header}}
+            <h2>Headers</h2>
+            {{range $key, $value := .Header}}
+                <p>{{$key}}</p>
+                <ul>
+                    {{range $value}}<li>{{.}}</li>{{end}}
+                </ul>
+            {{end}}
+        {{end}}
+
+        {{if .Submissions -}}
+        <main>
+            <p><strong>variable names</strong> (identifiers) and <em>values</em>:</p>
+            {{range $key, $value := .Submissions}}
+            <p><string>{{$key}}</string></p>
+            <ul>{{range $value}}<li><em>{{.}}</em></li>{{end}}</ul>
+            {{end}}
+        </main>
+        {{end}}
+    </header>
+
+    <h2>Form</h2>
+    <form action="/?name=James" method="post">
+        <input type="text" name="name" placeholder="first name" autofocus autocomplete="off">
+        <input type="submit" name="submit-btn" value="onda button">
+    </form>
+</body>
+</html>
