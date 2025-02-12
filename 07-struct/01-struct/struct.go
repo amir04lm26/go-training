@@ -27,4 +27,12 @@ func main() {
 
 	fmt.Printf("%s lives in %s.\r\n", employee1.name, employee1.address.city)
 	fmt.Printf("%s is %d.\r\n", employee1.name, employee1.age)
+
+	type Position struct {
+		x, y, moves int
+	}
+
+	p1 := Position{0, 0, 0}
+	p2 := Position{0, 0, 0}
+	fmt.Println("isEqual", p1 == p2) // Output: true
 }
