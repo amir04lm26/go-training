@@ -92,6 +92,11 @@ package main
 	```
 */
 
+// NOTE: Checking for race conditions
+/*
+	go test -race ./...
+*/
+
 // NOTE: Building Go Programs
 /*
 	Go programs are typically built using the go build command.

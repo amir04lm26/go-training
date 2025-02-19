@@ -1,6 +1,7 @@
 package main
 
 // * go run ./...
+// * go run *.go
 
 import (
 	"net/http"
