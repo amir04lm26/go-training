@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Index</title>
+  </head>
+  <body>
+    <h1>Cookie Values</h1>
+    {{range $index, $item := .}}
+    {{if eq $index 0}}
+    <h2>{{ $item }}</h2>
+    {{else}}
+    <figure>
+      <img src="/public/img/{{ $item }}" alt="{{ $item }}" />
+      <figcaption>
+        <strong>{{ $index }}-{{ $item }}</strong>
+      </figcaption>
+    </figure>
+    {{ end }}
+    {{ end }}
+
+    <form action="/" method="post" enctype="multipart/form-data">
+      <input type="file" name="nf" />
+      <input type="submit" />
+    </form>
+  </body>
+</html>
