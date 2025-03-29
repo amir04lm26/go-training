@@ -2,7 +2,7 @@ package main
 
 // NOTE: Data hierarchy
 /*
-	database -> table -> records -> fields -> characters
+	RDBS/RDBMS -> database -> table -> records -> fields -> characters
 */
 
 // NOTE: See the database details

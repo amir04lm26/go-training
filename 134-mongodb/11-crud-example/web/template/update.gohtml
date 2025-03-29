@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Create Book</title>
+    <style>
+      html,
+      body {
+        padding: 0;
+        border: 0;
+        margin: 0;
+      }
+
+      body,
+      form {
+        display: flex;
+        flex-flow: column nowrap;
+        justify-content: center;
+        align-items: center;
+      }
+      input {
+        width: 60vw;
+        font-size: 5rem;
+        color: blue;
+        border: 1px solid black;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>Update A Book</h1>
+    <form
+      method="post"
+      action="/book/update/{{.Isbn}}"
+      onsubmit="handleSubmit(event)"
+    >
+      <input
+        type="text"
+        name="isbn"
+        placeholder="isbn"
+        required
+        autofocus
+        value="{{.Isbn}}"
+      />
+      <input
+        type="text"
+        name="title"
+        placeholder="title"
+        required
+        value="{{.Title}}"
+      />
+      <input
+        type="text"
+        name="author"
+        placeholder="author"
+        required
+        value="{{.Author}}"
+      />
+      <input
+        type="text"
+        name="price"
+        placeholder="price"
+        required
+        value="{{.Price}}"
+      />
+      <input type="submit" />
+    </form>
+
+    <script>
+      function handleSubmit(event) {
+        event.preventDefault();
+        event.stopPropagation();
+
+        const formData = new URLSearchParams(new FormData(event.target));
+
+        deleteUrl = event.target.getAttribute("action");
+        fetch(deleteUrl, {
+          headers: {
+            "Content-Type": "application/x-www-form-urlencoded",
+          },
+          method: "PUT",
+          redirect: "manual",
+          mode: "cors",
+          body: formData,
+        })
+          .then((response) => response.text())
+          .then((updatedHtml) => {
+            document.documentElement.innerHTML = updatedHtml;
+          });
+      }
+    </script>
+  </body>
+</html>
