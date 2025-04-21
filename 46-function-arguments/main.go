@@ -10,7 +10,7 @@ import "fmt"
 	Key Points:
 
 	1.	Value Types:
-		•	When you pass value types (like int, float64, bool, structs, etc.) to a function, they
+		•	When you pass value types (like int, float64, byte(uint8), bool, structs, etc.) to a function, they
 			are passed by value. This means that a copy of the value is made, and modifications to
 			this copy do not affect the original variable.
 			values types: int, float64, bool, string, uint, structs, arrays and Custom Defined

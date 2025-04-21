@@ -206,6 +206,21 @@ import "fmt"
 
 	Why?
 	•	new(int) explicitly requests heap allocation
+
+
+	new() is a built-in function that allocates memory for a zeroed value of a specified type and returns a pointer to it.
+
+	Explanation:
+	Type can be any Go type (e.g., int, struct, float64, etc.).
+	new(Type) returns a pointer of type *Type.
+	The value is initialized to the zero value for that type (e.g., 0 for numbers, "" for strings,
+	nil for slices/maps/interfaces/pointers, etc.).
+
+	Key points:
+	new(Type) may allocate memory on the heap if the compiler determines that the pointer "escapes"
+	the current function (i.e., is used outside its scope).
+
+	If the pointer does not escape, the compiler may allocate it on the stack, even if you use new().
 */
 
 // NOTE: 5. Closures Capturing Variables

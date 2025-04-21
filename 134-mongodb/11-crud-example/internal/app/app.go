@@ -1,17 +1,17 @@
 package app
 
 import (
-	"crud-example/api/handlers"
 	"crud-example/config"
 	"crud-example/internal/db"
-	approuter "crud-example/internal/router"
 	"crud-example/internal/tpl"
+	"fmt"
 	"net/http"
-
-	"github.com/julienschmidt/httprouter"
 )
 
+type cfg struct{}
+
 func Run() error {
+	app := cfg{}
 	// Initialize env variables
 	config.LoadEnv()
 	// Initialize templates
@@ -21,11 +21,10 @@ func Run() error {
 	// Close MongoDB connection on exit
 	defer db.DisconnectMongoClient()
 
-	router := httprouter.New()
-	bc := handlers.NewBookController()
+	srv := &http.Server{
+		Addr:    fmt.Sprintf(":%s", config.WebPort),
+		Handler: app.routes(),
+	}
 
-	// Set up the routes
-	approuter.SetupRoutes(router, bc)
-
-	return http.ListenAndServe(":8080", router)
+	return srv.ListenAndServe()
 }

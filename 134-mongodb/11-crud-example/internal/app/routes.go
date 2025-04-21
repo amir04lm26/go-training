@@ -1,4 +1,4 @@
-package approuter
+package app
 
 import (
 	"crud-example/api/handlers"
@@ -7,7 +7,10 @@ import (
 	"github.com/julienschmidt/httprouter"
 )
 
-func SetupRoutes(router *httprouter.Router, bc *handlers.BookController) {
+func (app *cfg) routes() http.Handler {
+	router := httprouter.New()
+	bc := handlers.NewBookController()
+
 	router.Handler(http.MethodGet, "/", http.RedirectHandler("/books", http.StatusSeeOther))
 	router.GET("/books", bc.GetBooks)
 	router.GET("/book/details/:isbn", bc.GetBookDetails)
@@ -16,4 +19,6 @@ func SetupRoutes(router *httprouter.Router, bc *handlers.BookController) {
 	router.GET("/book/update/:isbn", bc.GetUpdateBook)
 	router.PUT("/book/update/:isbn", bc.PutUpdatedBook)
 	router.DELETE("/book/delete/:isbn", bc.DeleteBookProcess)
+
+	return router
 }
